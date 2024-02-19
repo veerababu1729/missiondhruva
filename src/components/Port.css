@@ -1,0 +1,96 @@
+
+
+.port-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hospital-details {
+  margin-bottom: 40px;
+}
+
+.hospital-name {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.hospital-location {
+  font-style: italic;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.about-hospital {
+  margin-bottom: 20px;
+}
+
+.about-hospital h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.hospital-image {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.main-image {
+  margin-top: 20px;
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.equipments {
+  margin-bottom: 40px;
+}
+
+.equipments h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.equipment-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.equipment-image {
+  max-width: 100px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.treatments {
+  margin-bottom: 40px;
+}
+
+.treatments h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.treatments-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.treatments-table th, .treatments-table td {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.treatments-table th {
+  text-align: left;
+  font-weight: bold;
+}
+
+.treatments-table td {
+  vertical-align: top;
+}
+
+@media (max-width: 600px) {
+  .equipment-image {
+      max-width: 80px;
+  }
+}

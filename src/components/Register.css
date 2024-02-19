@@ -1,0 +1,191 @@
+/* Base styles */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+  
+  /* Login container */
+  .login-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    background-color: #f2f2f2;
+  }
+  
+  /* Left section */
+  .leftma {
+    flex: 2;
+    padding: 3rem;
+    text-align: center;
+    color: #666;
+  }
+  
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+  
+  /* Right section */
+  .rightm {
+    /* flex: 3; */
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center items horizontally */
+  
+    padding: 3rem;
+    background-color: rgba(255, 255, 255, 0); /* Set opacity to 70% */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  .rightm h2{
+    color: black;
+    justify-content: left;
+  }
+  .login-container {
+    background-image: url("../image/login.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Optional: Set full height */
+  }
+  
+  /* Login form */
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    color: #ccc;
+  }
+  
+  label {
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  #email,#passworde,#usernamee,#confirmPassword {
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    width: 100%;
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding:5px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  button[type="submit"]:hover {
+    
+    background-color: #449A48;
+  }
+  
+  /* Forgot password link */
+  .forgot-password {
+    color: #666;
+    text-decoration: none;
+    margin-top: 1rem;
+  }
+  
+  .forgot-password:hover {
+    color: #4CAF50;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .login-container {
+      flex-direction: column;
+    }
+  
+    .leftma,
+    .rightm {
+      flex: 1;
+    }
+  }
+  
+    
+    
+  
+  /*   
+  
+    .rightm {
+      flex: 4;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center; 
+    
+      padding: 3rem;
+      background-color: rgba(255, 255, 255, 0.0); 
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      width: 70%;
+    }
+    
+    label {
+      margin-bottom: 0.5rem;
+      display: block;
+      color: white;
+    }
+    
+    input[type="text"],
+    input[type="password"] {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+    
+    button[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    
+    button[type="submit"]:hover {
+      background-color: #449A48;
+    }
+    
+    .forgot-password {
+      text-decoration: none;
+      margin-top: 1rem;
+    }
+    
+    .forgot-password:hover {
+      color: #4CAF50;
+    }
+    
+    @media (max-width: 768px) {
+      .login-container {
+        flex-direction: column;
+      }
+    
+      .leftma,
+      .rightm {
+        flex: 1;
+      }
+    }
+     */

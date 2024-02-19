@@ -1,0 +1,227 @@
+.body1 {
+    background-color: rgb(227, 245, 248);
+    width: 100%;
+    padding: 30px;
+}
+
+.bodyin1e {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+}
+.bodyin1ee{
+    width: 90%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    
+    margin: auto;
+}
+.bol{
+    font-size:50px;
+    font-weight: bolder;
+}
+
+.bodin1 {
+    margin: 55px;
+}
+.bodin12 h4,.bodin12e h4 {
+    font-size: 20px;
+    /* Adjust the font size of the description */
+    color: #666;
+    /* Adjust the color of the description */
+}
+.bodin1e {
+    margin: 55px;
+}
+
+.bodin1 img {
+    height: 500px;
+    width: 400px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.bodin1e img {
+    height: 500px;
+    width: 400px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.bodin1e img:hover {
+    transform: translateY(-25px);
+    transition: transform 0.6s ease;
+}
+
+.bodin1 img:hover {
+    transform: translateY(-25px);
+    transition: transform 0.6s ease;
+}
+.bodin12 {
+    width: 56%;
+    padding: 2rem;
+    text-align: justify;
+}
+
+.bodin12e {
+    width: 56%;
+    padding: 2rem;
+    text-align: justify;
+}
+
+.bodin1 {
+    text-align: justify;
+    transition: transform 0.5s ease;
+}
+.bodin1e {
+    text-align: justify;
+    transition: transform 0.5s ease;
+}
+.bodin1:hover {
+    transform: translateY(-25px);
+    transition: transform 0.6s ease;
+}
+.bodin1e:hover {
+    transform: translateY(-25px);
+    transition: transform 0.6s ease;
+}
+
+.bol {
+    margin-bottom: 0.5rem;
+}
+
+.coloo {
+    color: #f00;
+}
+
+.butt {
+    width: 130px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.butt:hover {
+    background-color: #0056b3;
+}
+
+
+.bodin1 img:hover,
+.bodin12:hover {
+    transform: translateY(-15px);
+    transition: border-radius 0.8s ease, transform 0.3s ease;
+}
+.bodin1e img:hover,
+.bodin12e:hover {
+    transform: translateY(-15px);
+    transition: border-radius 0.8s ease, transform 0.3s ease;
+}
+
+@keyframes buttonAnimation {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.butt {
+    width: 130px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    animation: buttonAnimation 1s infinite;
+}
+
+.butt:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+    .bodyin1e,
+    .bodyin1ee {
+        width: 95%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bodin1,
+    .bodin1e,
+    .bodin12,
+    .bodin12e {
+        width: 100%;
+        margin: 25px ;
+        text-align: justify;
+        align-items: center;
+        
+    }
+    .bodin1,.bodin1e {
+        text-align: center   ;
+    }
+
+    .bodin1 img,
+    .bodin1e img {
+        max-width: 100%;
+        height: auto;
+        /* margin-bottom: 15px; */
+        /* max-height: 600px;  */
+    }
+    .bodin1 img:hover,
+    .bodin1e img:hover,
+    .bodin12:hover {
+        transform: none;
+        transition: none;
+    }
+}
+
+@media only screen and (min-width: 325px) and (max-width: 767px) {
+    .bodyin1e,
+    .bodyin1ee {
+        width: 95%;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bodin1,
+    .bodin1e,
+    .bodin12,
+    .bodin12e {
+        width: 100%;
+        margin: 25px 0;
+        text-align: justify;
+    }
+
+    .bodin1 img,
+    .bodin1e img {
+        width: 100%;
+        height: 600px;
+        max-width: 768px;
+        min-width: 325px;
+        /* margin-bottom: 15px; */
+    }
+
+    .bodin1 img:hover,
+    .bodin1e img:hover,
+    .bodin12:hover {
+        transform: none;
+        transition: none;
+    }
+}
