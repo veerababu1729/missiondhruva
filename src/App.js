@@ -15,6 +15,7 @@ import Update from './components/Update';
 import AddNew from './components/AddNew';
 import About from './components/About';
 import Forgot from './components/Forgot';
+import Scams from './components/Scams';
 function App() {
   return (
     <>
@@ -35,6 +36,7 @@ function App() {
       <Route path='/Update' element={<Update/>}/>
       <Route path='/About' element={<About/>}/>
       <Route path='/Forgot' element={<Forgot/>}/>
+      <Route path='/Scams' element={<Scams/>}/>
     </Routes>
     </BrowserRouter>
     </>
