@@ -1,0 +1,33 @@
+.scams-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .scams-heading {
+    text-align: center;
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .scams-content {
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #1e485c;
+  }
+  
+  .scam-point {
+    margin-bottom: 30px;
+  }
+  
+  .scam-point-heading {
+    color: #020f1b;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+  
+  .scams-content p {
+    margin-bottom: 15px;
+  }
+  

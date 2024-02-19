@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPills, faSyringe, faCapsules } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 function MyVerticallyCenteredModal({ data, ...props }) {
   // Calculate total saving
@@ -93,7 +94,7 @@ function MyVerticallyCenteredModal({ data, ...props }) {
 
 
 function Branded() {
-
+  const navigate=useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedMedicine, setSelectedMedicine] = useState('paracetamol');
   const [searchResults, setSearchResults] = useState([]);
@@ -132,8 +133,6 @@ function Branded() {
 
     selectedItem.isSelected = !selectedItem.isSelected;
     setdataa(prevData => prevData.map(item => (item._id === _id ? selectedItem : item)));
-    // console.log(dataa);
-
 
   };
 
@@ -192,7 +191,9 @@ function Branded() {
       <div className='inside'>
 
         <div className="search-container">
+          
           <div className='searc'>
+            
             <div className="search-inner">
               <input type="text" value={value} className='inputt' onChange={onChange} placeholder="Search for medicines..." />
               <button onClick={handleSearch} >Search</button>
@@ -221,6 +222,7 @@ function Branded() {
           </div>
 
         </div>
+        
         <div className='showdata'>
           {dataa.filter(item => item.isSelected).map((selectedItem, index) => (
             <div key={index} className='selectedddd'>
@@ -228,6 +230,7 @@ function Branded() {
               <span>{selectedItem.Generic}</span>
 
             </div>
+
           ))}
           <button onClick={handleCompareButtonClick} className='selecte'>Compare</button>
           <MyVerticallyCenteredModal
@@ -236,6 +239,8 @@ function Branded() {
             onHide={() => setModalShow(false)}
           />
         </div>
+        
+        <button className='butt' id='plced' onClick={navigate('/Scams')}>Confuse in Branded vs Generic</button>  
 
         <div className="tableContainer">
           <table id="medicineTable">
@@ -243,7 +248,7 @@ function Branded() {
               <tr>
                 <th>Select</th>
                 <th>Department Name</th>
-                
+
                 <th>Branded Name</th>
                 <th>Generic Name</th>
                 <th>Branded Cost</th>
@@ -257,23 +262,18 @@ function Branded() {
                     <td className='cenrr'>
                       <input
                         type='checkbox'
-                        checked={result.isSelected}
+                        checked={dataa.isSelected}
                         onChange={() => handleCheckboxChange(result._id)}
                       />
                     </td>
                     <td>
-                      {result.Department && (
-                        <span className="department-box">{result.Department}</span>
-                      )}
+
+                      <span className="department-box">{result.Department}</span>
                     </td>
-                    
-                   
+
                     <td>
-                    {result.Department && (
-                        <span className="department-box">{result.Dosage}</span>
-                      )}
+                      {result.Branded}<span className="department-boxx">{result.Dosage}</span>
                     </td>
-                    <td>{result.Branded}</td>
                     <td>{result.Generic}</td>
                     <td>{result.Bcost}</td>
                     <td>{result.Gcost}</td>
@@ -290,10 +290,10 @@ function Branded() {
                       />
                     </td>
                     <td>
-                      
-                        <span className="department-box">{result.Department}</span>
+
+                      <span className="department-box">{result.Department}</span>
                     </td>
-                    
+
                     <td>
                       {result.Branded}<span className="department-boxx">{result.Dosage}</span>
                     </td>
@@ -312,6 +312,7 @@ function Branded() {
         </div>
       </div>
 
+      
     </>
   );
 }
