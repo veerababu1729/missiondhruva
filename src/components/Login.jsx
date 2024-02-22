@@ -50,6 +50,8 @@ const Login = () => {
         } else {
             localStorage.setItem('isLoggedIn', true); // Set login status to true
             localStorage.setItem('userData', JSON.stringify(user)); // Save user data
+            window.alert(user);
+            localStorage.setItem('aadh',user.aadhar);
             setLog(true);
         }
     }

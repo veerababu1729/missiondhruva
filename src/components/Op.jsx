@@ -89,6 +89,7 @@ const Op = (props) => {
   const [ongoingPatients, setOngoingPatients] = useState([]);
   const [waitingPatients, setWaitingPatients] = useState([]);
   const [completedPatients, setCompletedPatients] = useState([]);
+  const [Holdd, setHold] = useState([]);
 
   const [emergencyPatients, setEmergencyPatients] = useState([]);
   const [doctorName, setDoctorName] = useState("Arun");
@@ -105,7 +106,9 @@ const Op = (props) => {
       setOngoingPatients(responseData.filter(patient => patient.status === 'Ongoing'));
       setWaitingPatients(responseData.filter(patient => patient.status === 'waiting'));
       setCompletedPatients(responseData.filter(patient => patient.status === 'completed'));
+      setHold(responseData.filter(patient => patient.status === 'hold'));
       setEmergencyPatients(responseData.filter(patient => (patient.urgency === 'emergency') && (patient.status === 'waiting')));
+      window.alert(JSON.stringify(responseData));
 
       window.alert(JSON.stringify(emergencyPatients));
       // window.alert(JSON.stringify(waitingPatients));
@@ -126,9 +129,9 @@ const Op = (props) => {
         </div>
         <div className="main2">
           <h1 className="header">Now Checking</h1>
-          <div className="appointment-info">
-            <div className="appointment-item">
-              <h2>Ongoing Patients</h2>
+          <div className="appointment-info" id='hash'>
+            <div className="appointment-item"  >
+              <h2>Ongoing Patient No</h2>
               <div className="number blinking">{waitingPatients.length > 0 ? waitingPatients[0].number : "No patients"}</div>
             </div>
             <div className="appointment-item">
@@ -144,46 +147,34 @@ const Op = (props) => {
                 <li>Cardioligist</li>
               </ul>
             </div>
+            <div >
+              <strong>Avg Time:  15Mins</strong>
+            </div>
           </div>
-          <div className="emergency-list"> {/* Apply styles from external CSS */}
-            <h2>Emergency List</h2>
-            <ul>
-              {emergencyPatients.length > 0 ? (
-                <ul>
-                  {emergencyPatients.map((patient, index) => (
-                    <li key={index + 1}>
-                      <ul className="list-bar">
-                        <li>
-                          {patient.name}
-                        </li>
-                      </ul>
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <li>No patients</li>
-              )}
+          
+          <div className="patient-list">
+  <h2>Outpatient List</h2>
+  <div className="grid-container">
+    {waitingPatients.length > 0 ? (
+      waitingPatients.map((patient, index) => (
+        <div key={index + 1} className="grid-item">
+          {patient.number}   {patient.name}
+        </div>
+      ))
+    ) : (
+      <div className="grid-item">No patients</div>
+    )}
+    {Holdd.length > 0 ? (
+      Holdd.map((patient, index) => (
+        <div key={index + 1} className="grid-item">
+          {patient.name} onHold </div>
+      ))
+    ) : (
+      <></>
+    )}
+  </div>
+</div>
 
-            </ul>
-          </div>
-          <div className="patient-list"> {/* Apply styles from external CSS */}
-            <h2>Outpatient List</h2>
-            <ul>
-              {waitingPatients.length > 1 ? (
-                waitingPatients.map((patient, index) => (
-                  <li key={index + 1}>
-                  <ul className="list-bar">
-                    <li>
-                      {patient.name}
-                    </li>
-                  </ul>
-                </li>
-                ))
-              ) : (
-                <li>No patients</li>
-              )}
-            </ul>
-          </div>
         </div>
       </div>
     </>

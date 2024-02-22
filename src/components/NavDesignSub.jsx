@@ -4,9 +4,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { useNavigate } from 'react-router-dom';
+import './NavDesign.css';
 
 function NavDesign() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const [expanded, setExpanded] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -23,7 +24,7 @@ function NavDesign() {
     localStorage.removeItem('userData');
     setIsLoggedIn(false);
     navigate('/LoginSub');
-    
+
   };
 
   const toggleNavbar = () => {
@@ -49,12 +50,16 @@ function NavDesign() {
             {/* <Nav.Link href="#">Home</Nav.Link> */}
           </Nav>
           <Nav className="justify-content-center">
-            <Nav.Link href="/Update">Update</Nav.Link>
-            <Nav.Link href="/AddNew">Add</Nav.Link>
+
             {isLoggedIn ? (
-              <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+              <>
+                <Nav.Link href="/Update" className='lins'>Update</Nav.Link>
+                <Nav.Link href="/AddNew" className='lins'>Add</Nav.Link>
+                <Nav.Link href="/Notif" className='lins'>Notifications</Nav.Link>
+                <Nav.Link onClick={handleLogout} className='lins'>Logout</Nav.Link>
+              </>
             ) : (
-              <Nav.Link href="/Login">Login</Nav.Link>
+              <Nav.Link href="/Login" className='lins'>Login</Nav.Link>
             )}
           </Nav>
         </Navbar.Collapse>

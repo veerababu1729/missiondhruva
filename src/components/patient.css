@@ -1,0 +1,36 @@
+.snm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: antiquewhite; */
+    /* height: 550px; */
+}
+.img-fluid{
+    border-radius: 50%;
+}
+/* .list-groupp{
+    
+} */
+.psad{
+    padding: 10px;
+}
+
+.col-md-8,.col-md-4{
+    padding: 0px;
+}
+
+
+.list-group-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; /* optional: align items vertically centered */
+    padding: 10px;
+}
+.card-header{
+    /* border-radius: none; */
+    margin: 0px;
+}
+.list-groupp{
+    padding: 15px;
+}

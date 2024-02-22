@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import './NavDesign.css';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 function NavDesign() {
@@ -51,12 +52,17 @@ function NavDesign() {
 
             <Nav className="justify-content-center" >
               {/* Add your navigation links here */}
-              <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/About">About</Nav.Link>
+              <Nav.Link href="/" className='lins'>Home</Nav.Link>
+              <Nav.Link href="/About" className='lins'>About</Nav.Link>
+              <Nav.Link href="/Book" className='lins'>Book An Appointment</Nav.Link>
+              
               {isLoggedIn ? (
-                <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                <>
+                <Nav.Link onClick={handleLogout} className='lins'>Logout</Nav.Link>
+                <Nav.Link href='/pat' className='lins'>Profile</Nav.Link>
+                </>
               ) : (
-                <Nav.Link href="/Login">Login</Nav.Link>
+                <Nav.Link href="/Login" className='lins'>Login</Nav.Link>
               )}
             </Nav>
 

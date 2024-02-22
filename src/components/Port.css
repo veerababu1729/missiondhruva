@@ -8,6 +8,27 @@
 .hospital-details {
   margin-bottom: 40px;
 }
+.doctor-profile {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.doctor-image {
+  width: 100px; /* Adjust the width as needed */
+  height: auto;
+  margin-right: 20px;
+}
+
+.doctor-details {
+  flex: 1;
+}
+
+/* Optional: Add hover effect */
+.doctor-profile:hover {
+  background-color: #f0f0f0;
+}
 
 .hospital-name {
   font-size: 24px;

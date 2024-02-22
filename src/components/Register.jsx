@@ -3,13 +3,14 @@ import NavDesign from "./NavDesign"; // Assuming this component exists and rende
 import './Register.css';
 import axios from 'axios';
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 const Register = () => {
     const navigate=useNavigate();
     const [userData, setUserData] = useState({
         username: '',
         password: '',
-        email: ''
+        email: '',
+        aadh:''
     });
     const [usepwd, setUsePwd] = useState(''); // Assuming this state is defined somewhere
 
@@ -77,6 +78,17 @@ const Register = () => {
                             onChange={handleChange}
                             required
                         />
+                        <label htmlFor="password">Aadhar No:</label>
+                        <input
+                            type="text"
+                            id="email"
+                            name="aadh"
+                            placeholder="Enter your Aadhar"
+                            value={userData.aadh}
+                            onChange={handleChange}
+                            required
+                        />
+
                         <label htmlFor="password">Password:</label>
                         <input
                             type="password"

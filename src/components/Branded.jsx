@@ -180,6 +180,9 @@ function Branded() {
     getdata();
 
   }, []);
+  const handlenav=(e)=>{
+    navigate('/Scams');
+  }
 
 
 
@@ -240,7 +243,8 @@ function Branded() {
           />
         </div>
         
-        <button className='butt' id='plced' onClick={navigate('/Scams')}>Confuse in Branded vs Generic</button>  
+        <button className='butt' id='plced' onClick={()=>{
+          handlenav()}}>Confuse in Branded vs Generic</button>  
 
         <div className="tableContainer">
           <table id="medicineTable">

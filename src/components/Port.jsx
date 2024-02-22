@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import NavDesign from "./NavDesign";
 import './Port.css';
+import axios from "axios";
+import DoctorProfile from "./Doctor";
+import { useNavigate } from "react-router-dom";
 
+import fors from '../image/lady_doctor.webp';
 const Port = () => {
+    const navigate = useNavigate();
     const [selectedHospital, setSelectedHospital] = useState(null);
 
     useEffect(() => {
@@ -11,6 +16,27 @@ const Port = () => {
             setSelectedHospital(JSON.parse(storedHospital));
         }
     }, []);
+
+    const [dct, setDcts] = useState([]);
+
+    useEffect(() => {
+        getDcts();
+    }, []);
+
+    const getDcts = async () => {
+        try {
+            const response = await axios.get('http://localhost:8090/dct'); // Using axios for HTTP requests
+            setDcts(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    const handleDoctorClick = (d) => {
+        localStorage.setItem("prof", JSON.stringify(d));
+        // console.log(JSON.stringify(d));
+        navigate('/Doctors')
+
+    }
     return (
         <div className="port-container">
             <NavDesign />
@@ -19,13 +45,21 @@ const Port = () => {
                     <div className="hospital-details">
                         <h1 className="hospital-name">{selectedHospital.Name}</h1>
                         <p className="hospital-location">{selectedHospital.Location}</p>
-                        <div className="about-hospital">
-                            <h2>About</h2>
-                            {/* <img className="hospital-image" src={selectedHospital.About} alt="Hospital" /> */}
-                        </div>
+
                         <img className="main-image" src={selectedHospital.Main_Image} alt="Main" />
                     </div>
                 )}
+                <h2>Doctors</h2>
+                {dct.map((doctor) => (
+                    <div className="doctor-profile" key={doctor.id} onClick={() => handleDoctorClick(doctor)}>
+                        <img src={fors} alt={doctor.name} className="doctor-image" />
+                        <div className="doctor-details">
+                            <h3>{doctor.name}</h3>
+                            <p>{doctor.specialization}</p>
+                        </div>
+                    </div>
+                ))}
+
 
                 {selectedHospital && (
                     <div className="equipments">
@@ -62,7 +96,34 @@ const Port = () => {
                         </table>
                     </div>
                 )}
+                {selectedHospital && (
+                    <div>
+                        <div className="treatments">
+                            <h2>General Test Costs</h2>
+                            <table className="treatments-table">
+                                <thead>
+                                    <tr>
+                                        <th>Test</th>
+                                        <th>Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {selectedHospital.TandC.map((test, index) => (
+                                        <tr key={index}>
+                                            <td>{test.Test}</td>
+                                            <td>{test.Cost}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                )}
+
             </div>
+
         </div>
     );
 };

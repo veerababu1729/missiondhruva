@@ -1,8 +1,15 @@
 /* Update.css */
+.containerfluid{
+  /* margin: auto; */
+  width: 100%;
+}
+.hashi{
+  margin-left: 400px;
+}
 
 /* Container */
 .update-container {
-    max-width: 600px;
+    max-width: 1600px;
     margin: 0 auto;
     padding: 20px;
     /* margin-top:25px */
@@ -11,6 +18,7 @@
   /* Form */
   .update-form {
     display: flex;
+    width: 100%;
     flex-direction: column;
   }
   

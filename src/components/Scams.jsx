@@ -35,7 +35,7 @@ const Scams = (props) => {
         </div>
         <div className="scam-point">
           <h2 className="scam-point-heading">Availability of Brands</h2>
-          <p>More than 10,000 brands of drugs are available in India, leading to a wide variation in prices.</p>
+          <p>More than 1,00,000 brands of drugs are available in India, leading to a wide variation in prices.</p>
         </div>
       </div>
     </div>
