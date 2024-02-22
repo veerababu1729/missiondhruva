@@ -1,10 +1,14 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To run this project System should have..NodeJs,ExpressJs,
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+Inside the meds folder like meds> Execute below commands
+### `npm install i`
 
 ### `npm start`
 
