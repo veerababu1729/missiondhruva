@@ -1,0 +1,8 @@
+
+## Getting Started: 
+Follow these steps to set up and run the project: 
+1. **Installation:** `npm install i` 
+2. **Run the Server:** `nodemon index.js`
+3. **Verify Database Connectivity:** 
+- After running the server, ensure that there are no error messages related to database connection in the console output.
+
