@@ -16,6 +16,12 @@ import AddNew from './components/AddNew';
 import About from './components/About';
 import Forgot from './components/Forgot';
 import Scams from './components/Scams';
+import DoctorProfile from './components/Doctor';
+import Patient from './components/Patienntt';
+import InserDocs from './components/AddDoc';
+import AddDoc from './components/AddDoc';
+import Book from './components/Book';
+import Notification from './components/Notification';
 function App() {
   return (
     <>
@@ -37,6 +43,11 @@ function App() {
       <Route path='/About' element={<About/>}/>
       <Route path='/Forgot' element={<Forgot/>}/>
       <Route path='/Scams' element={<Scams/>}/>
+      <Route path='/Doctors' element={<DoctorProfile/>}/>
+      <Route path='/pat' element={<Patient/>}/>
+      <Route path='/insr' element={<AddDoc/>}/>
+      <Route path='/Book' element={<Book/>}/>
+      <Route path='/Notif' element={<Notification/>}/>
     </Routes>
     </BrowserRouter>
     </>
