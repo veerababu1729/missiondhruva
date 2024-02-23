@@ -7,8 +7,9 @@ import './patient.css';
 import { useNavigate } from "react-router-dom";
 
 const Patient = () => {
-    const navigate=useNavigate
+    const navigate = useNavigate();
     const [data, getdata] = useState([]);
+    const [ups, setups] = useState([]);
 
     useEffect(() => {
         getss();
@@ -25,14 +26,7 @@ const Patient = () => {
         // Add more appointments as needed
     ]);
 
-    const addocs = () => {
-        const newdocs = {
-            date: prompt('Enter date (YYYY-MM-DD)'),
-            time: prompt('Enetr The Description'),
-            download: prompt('Upload the file link here')
-        };
-        setdocs([...healthRecords, newdocs]);
-    };
+
     const [docs, setdocs] = useState([
         { date: '2024-02-22', desciption: "some thing enered", link: "enered link" },
         { date: '2024-01-15', desciption: "some thing enered", link: "enered link" },
@@ -44,7 +38,7 @@ const Patient = () => {
     useEffect(() => {
         getdocs();
     }, []);
-    
+
 
     const getss = async () => {
         try {
@@ -67,16 +61,26 @@ const Patient = () => {
             console.error(error);
         }
     };
+    const getup = async () => {
+        try {
+            const response = await axios.get('http://localhost:8090/Patient');
+            const responseData = response.data;
+            setups(responseData);
+            window.alert(JSON.stringify(ups));
+        } catch (error) {
+            console.error(error);
+        }
+    };
     const handleJoinSession = (sessionId) => {
         // Handle joining session logic here, e.g., redirect to a video call page
-        window.alert('Joining session with sessionId:', sessionId);
+        window.alert(sessionId);
     };
     const handleDownload = () => {
         // Replace 'your-pdf-file.pdf' with the actual URL of your PDF file
         window.location.href = 'https://s2.q4cdn.com/170666959/files/Blank.pdf';
         window.alert("downloaded")
     };
-    const filename="generation.pdf"
+    const filename = "generation.pdf"
     const handleDownloadd = (record) => {
         try {
             const dataURL = `data:text/plain;base64,${btoa(record.fileContent)}`; // Assuming fileContent contains the file data
@@ -158,13 +162,14 @@ const Patient = () => {
                                 <div className="col-md-4">
                                     <div className="card-header">Upcoming Appointments</div>
                                     <ul className="list-group list-group-flush">
-                                        {upcomingAppointments.map((appointment, index) => (
+                                        {data.filter(appointment => appointment.status === "confirmed").map((appointment, index) => (
                                             <li key={index} className="list-group-item">
                                                 <div>Date: {appointment.date} {appointment.time}</div>
                                                 <div>Doctor: {appointment.doctor}</div>
-                                                <button className="btn btn-primary" onClick={() => handleJoinSession(appointment.sessionId)}>Join Session</button>
+                                                <button className="btn btn-primary" onClick={() => handleJoinSession(appointment.meetlink)}>Join Session</button>
                                             </li>
                                         ))}
+
                                     </ul>
                                 </div>
 
@@ -194,7 +199,7 @@ const Patient = () => {
                                         ))
                                     }
                                 </ul>
-                                <a href="/insr"><button className="onere">Add Own Personal</button></a> 
+                                <a href="/insr"><button className="onere">Add Own Personal</button></a>
 
                             </div>
                         </div>

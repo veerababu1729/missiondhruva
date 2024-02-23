@@ -10,26 +10,24 @@ const Notification = () => {
         condition: "",
         status: "",
         number: "",
-        doctor: ""
+        doctor: "",
+        meetlink:"",
+        type:"",
+        aadh:""
     });
 
     const [ongoingPatients, setOngoingPatients] = useState([]);
     const [waitingPatients, setWaitingPatients] = useState([]);
     const [completedPatients, setCompletedPatients] = useState([]);
     const [confirmation, setConfirmation] = useState([]);
+    const [links, setlinks] = useState([]);
     const [hold, sethold] = useState([]);
 
     useEffect(() => {
         fetchData();
     }, []);
 
-    useEffect(() => {
-        if (ongoingPatients.length === 0 && waitingPatients.length > 0) {
-            const nextPatient = waitingPatients[0]; // Assuming you want to take the first patient in the waiting list
-            setOngoingPatients([nextPatient]);
-            setWaitingPatients(waitingPatients.slice(1)); // Remove the patient from the waiting list
-        }
-    }, [ongoingPatients, waitingPatients]);
+   
 
     const fetchData = async () => {
         try {
@@ -39,6 +37,7 @@ const Notification = () => {
             setOngoingPatients(responseData.filter(patient => patient.status === 'Ongoing'));
             setWaitingPatients(responseData.filter(patient => patient.status === 'waiting'));
             setConfirmation(responseData.filter(patient => patient.status === 'confirmation'));
+            setlinks(responseData.filter(patient => patient.type === 'Online'));
             sethold(responseData.filter(patient => patient.status === 'hold'));
         } catch (error) {
             console.error('Error fetching patient data:', error);
@@ -58,7 +57,7 @@ const Notification = () => {
             });
     };
 
-    
+
 
     const handleComplete = (id) => {
         const completedPatient = ongoingPatients.find(patient => patient.id === id);
@@ -75,6 +74,20 @@ const Notification = () => {
     const handlePut = (id) => {
         const completedPatient = confirmation.find(patient => patient.id === id);
         completedPatient.status = 'waiting';
+        window.alert(JSON.stringify(completedPatient));
+        axios.post(`http://localhost:8090/patientt`, completedPatient).then((response) => {
+            console.log(response);
+            window.location.reload();
+        }).catch((error) => {
+            console.error('Error updating patient status:', error);
+            window.alert("Error updating patient status");
+        })
+
+    };
+    const handlePutt = (id) => {
+        const completedPatient = links.find(patient => patient.id === id);
+        completedPatient.meetlink = 'https://meet.google.com/egf-cept-acw';
+        completedPatient.status="confirmed";
         window.alert(JSON.stringify(completedPatient));
         axios.post(`http://localhost:8090/patientt`, completedPatient).then((response) => {
             console.log(response);
@@ -104,6 +117,8 @@ const Notification = () => {
                 setCompletedPatients([...completedPatients, newPatient]);
             } else if (newPatient.status === 'hold') {
                 sethold([...completedPatients, newPatient]);
+            } else if (newPatient.status === 'confirmation' && newPatient.type === 'Online') {
+                setlinks([...completedPatients, newPatient]);
             } else if (newPatient.status === 'confirmation') {
                 setConfirmation([...completedPatients, newPatient]);
             }
@@ -115,30 +130,55 @@ const Notification = () => {
     return (
         <>
             <NavDesign />
-            <h1 className="onerr">Update Page</h1>
-            <div className="ucontainer"></div>
-            <div className="lpatients-list">
-                <h2>Ongoing Patients</h2>
-                <ul>
+            <h1 className="onerr">Notification Page</h1>
+            <div className="ucontainer">
+                <div className="lpatients-list">
+                    <h2>Offline Patients</h2>
+                    <ul>
 
-                    {confirmation.length > 0 && (
-                        <ul>
-                            {confirmation.map(patient => (
-                                <li key={patient.id}>
-                                    <span>Name: {patient.name}</span>
-                                    <span>Age: {patient.age}</span>
-                                    <span>Gender: {patient.gender}</span>
-                                    <span>Number: {patient.number}</span>
-                                    <span>Date: {patient.date}</span>
-                                    <span>Profile Link: {patient.link}</span>
-                                    {patient.status === 'confirmation' && <div>Status: Give Confirmation</div>}
-                                    <button onClick={() => handlePut(patient.id)}>Send to waiting</button>
-                                </li>
-                            ))}
-                        </ul>
-                    )}
+                        {confirmation.length > 0 && (
+                            <ul>
+                                {confirmation.filter(patient => patient.type !== 'Online' && patient.status === 'confirmation').map(patient => (
+                                    <li key={patient.id}>
+                                        <span>Name: {patient.name}</span>
+                                        <span>Age: {patient.age}</span>
+                                        <span>Gender: {patient.gender}</span>
+                                        <span>Number: {patient.number}</span>
+                                        <span>Date: {patient.date}</span>
+                                        <span>Profile Link: {patient.link}</span>
+                                        {patient.status === 'confirmation' && <div>Status: Give Confirmation</div>}
+                                        <button onClick={() => handlePut(patient.id)}>Send to waiting</button>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
 
-                </ul>
+
+                    </ul>
+                </div>
+                <div className="lpatients-list">
+                    <h2>Online Patients</h2>
+                    <ul>
+
+                        {links.length > 0 && (
+                            <ul>
+                                {links.filter(patient => patient.type === 'Online' && patient.status === 'confirmation').map(patient => (
+                                    <li key={patient.id}>
+                                        <span>Name: {patient.name}</span>
+                                        <span>Age: {patient.age}</span>
+                                        <span>Gender: {patient.gender}</span>
+                                        <span>Number: {patient.number}</span>
+                                        <span>Date: {patient.date}</span>
+                                        <span>Profile Link: {patient.link}</span>
+                                        {patient.status === 'confirmation' && <div>Status: Give Confirmation</div>}
+                                        <button onClick={() => handlePutt(patient.id)}>Send Meeting Link</button>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+
+                    </ul>
+                </div>
             </div>
 
         </>

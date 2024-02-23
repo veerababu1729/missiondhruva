@@ -56,6 +56,7 @@ const Book = () => {
     gender: "",
     problem: "",
     status: "confirmation",
+    type:"",
     number: 0,
     doctor: "",
     date:"",
@@ -191,6 +192,22 @@ const Book = () => {
                       required
                     />
                   </div>
+                  <div className="form-group">
+                    <label htmlFor="type">Appointment Online/Offline:</label>
+                    <select
+                      id="gender"
+                      name="type"
+                      className="form-control"
+                      value={patientData.type}
+                      onChange={handleChange}
+                      required
+                    >
+                      <option value="">Select</option>
+                      <option value="Online">Online</option>
+                      <option value="Offline">Offline</option>
+                    </select>
+                  </div>
+                 
                   <div className="form-group">
                     <label htmlFor="date">Date:</label>
                     <input
