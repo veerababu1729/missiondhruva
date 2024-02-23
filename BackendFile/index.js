@@ -73,7 +73,7 @@ server.get('/dct', (req, res) => {
 server.post('/patient', (req, res) => {
     const datad = db.get('Patient')
     // console.log(req.body.username);
-    datad.insert({ name: req.body.name, age: req.body.age,mobi:req.body.mobi,aadh:req.body.aadh, gender: req.body.gender, problem: req.body.problem, status: req.body.status, number: req.body.number, doctor: req.body.doctor,date:req.body.date,link:req.body.link });
+    datad.insert({ name: req.body.name, age: req.body.age,mobi:req.body.mobi,aadh:req.body.aadh, gender: req.body.gender, problem: req.body.problem, status: req.body.status, number: req.body.number, doctor: req.body.doctor,date:req.body.date,link:req.body.link,type:req.body.type,meetlink:req.body.meetlink });
     
 })
 
