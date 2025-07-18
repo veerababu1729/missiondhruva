@@ -152,76 +152,7 @@ server.listen(PORT, (error) => {
 );
 
 
-// const express = require('express');
-// const cors = require('cors');
-// const monk = require('monk');
 
-// const server = express();
-// const PORT = 8090;
-
-// server.use(cors());
-// server.use(express.json());
-
-// const db = monk('mongodb+srv://sivateja:sivateja@facultydairy.wqm3eo7.mongodb.net/Drugs');
-// const patie = db.get('Patient');
-
-// server.get('/', (req, res) => {
-//     res.status(200);
-//     res.send("Server is running");
-// });
-
-// server.get('/patient', (req, res) => {
-//     patie.find({})
-//         .then((docs) => {
-//             res.json(docs);
-//         })
-//         .catch(error => {
-//             console.error('Error fetching patient data:', error);
-//             res.status(500).json({ error: 'Internal server error' });
-//         });
-// });
-
-// server.put('/patient/:id', (req, res) => {
-//     const { id } = req.params;
-//     const { name, age, gender, problem, status } = req.body;
-
-//     patie.update({ _id: id }, { $set: { name, age, gender, problem, status } })
-//         .then(() => {
-//             res.status(200).json({ message: 'Patient updated successfully' });
-//         })
-//         .catch(error => {
-//             console.error('Error updating patient:', error);
-//             res.status(500).json({ error: 'Internal server error' });
-//         });
-// });
-
-// server.post('/patient', (req, res) => {
-//     const { name, age, gender, problem, status } = req.body;
-
-//     patie.insert({ name, age, gender, problem, status })
-//         .then((newPatient) => {
-//             res.status(201).json(newPatient);
-//         })
-//         .catch(error => {
-//             console.error('Error adding new patient:', error);
-//             res.status(500).json({ error: 'Internal server error' });
-//         });
-// });
-
-// server.delete('/patient/:id', (req, res) => {
-//     const { id } = req.params;
-//     console.log("came");
-//     patie.remove({ _id: id })
-//         .then(() => {
-//             res.status(200).json({ message: 'Patient deleted successfully' });
-//         })
-//         .catch(error => {
-//             console.error('Error deleting patient:', error);
-//             res.status(500).json({ error: 'Internal server error' });
-//         });
-// });
-
-// server.listen(PORT, () => {
 //     console.log(`Server is running, and listening on port ${PORT}`);
 //     console.log("connected");
 // });
